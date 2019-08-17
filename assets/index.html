@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta name="renderer" content="webkit">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge;chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>alg-machine</title>
+    <link rel="shortcut icon" href="/favicon.png" type="image/x-icon">
+    <style>
+        body {
+            overflow-x: auto;
+        }
+
+        #root {
+            height: 100%;
+        }
+
+        .spinner {
+            margin: 0 auto;
+            padding: 160px 0;
+            width: 50px;
+            text-align: center;
+            font-size: 10px;
+        }
+
+        .spinner > .rect {
+            background-color: #00A0E9;
+            height: 60px;
+            width: 6px;
+            display: inline-block;
+            -webkit-animation: stretchDelay 1.2s infinite ease-in-out;
+            animation: stretchDelay 1.2s infinite ease-in-out;
+        }
+
+        .spinner .rect2 {
+            -webkit-animation-delay: -1.1s;
+            animation-delay: -1.1s;
+        }
+
+        .spinner .rect3 {
+            -webkit-animation-delay: -1.0s;
+            animation-delay: -1.0s;
+        }
+
+        .spinner .rect4 {
+            -webkit-animation-delay: -0.9s;
+            animation-delay: -0.9s;
+        }
+
+        .spinner .rect5 {
+            -webkit-animation-delay: -0.8s;
+            animation-delay: -0.8s;
+        }
+
+        @-webkit-keyframes stretchDelay {
+            0%, 40%, 100% {
+                -webkit-transform: scaleY(0.4)
+            }
+            20% {
+                -webkit-transform: scaleY(1.0)
+            }
+        }
+
+        @keyframes stretchDelay {
+            0%, 40%, 100% {
+                transform: scaleY(0.4);
+                -webkit-transform: scaleY(0.4);
+            }
+            20% {
+                transform: scaleY(1.0);
+                -webkit-transform: scaleY(1.0);
+            }
+        }
+    </style>
+</head>
+
+<body ontouchstart>
+<div id="root">
+    <div class="spinner">
+        <div class="rect rect1"></div>
+        <div class="rect rect2"></div>
+        <div class="rect rect3"></div>
+        <div class="rect rect4"></div>
+        <div class="rect rect5"></div>
+    </div>
+</div>
+
+<script>
+    (function () {
+        var loadCss = function (href, cb) {
+                var link = document.createElement('link');
+                link.onload = cb;
+                link.href = href;
+                link.rel = 'stylesheet';
+                document.head.appendChild(link);
+            },
+            loadJs = function (src, cb) {
+                var script = document.createElement('script');
+                script.onload = cb;
+                script.src = src;
+                document.body.appendChild(script);
+            };
+
+        loadJs('/assets.js?t=' + (+new Date), function () {
+            var assets = window.assets;
+            //load css
+            if (assets.app.css) {
+                loadCss('/' + assets.app.css);
+            }
+            //load js one by one
+            var libs = [],
+                assetJss = ['/' + assets.app.js],
+                jss = libs.concat(window.isDev ? ['/dll.js'].concat(assetJss) : assetJss);
+            if (assets.ENV === 'PE') {
+                jss = jss.concat(['https://hm.baidu.com/hm.js?2d0fca51c6c529309a15be84334f66e1']);
+            }
+            var i = 0, js;
+            (function nextJs() {
+                js = jss[i++];
+                js && loadJs(js, nextJs);
+            })();
+        });
+    })();
+</script>
+</body>
+</html>

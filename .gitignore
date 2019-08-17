@@ -1,0 +1,11 @@
+.cache/
+.idea/
+out/
+dist/
+node_modules/
+/mock/data/
+.DS_Store
+package-lock.json
+yarn.lock
+/TODO.md
+tmp/
