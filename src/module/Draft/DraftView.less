@@ -1,0 +1,44 @@
+.wrapper {
+  width: 70rem;
+  max-width: 70%;
+  height: auto;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  display: block;
+  box-sizing: content-box;
+  transform: translateX(-50%) translateY(-50%)
+}
+
+.quote {
+  font-size: 5em;
+  font-weight: 700;
+  text-align: center;
+  line-height: 1;
+  color: #567;
+}
+
+.quote:before, .quote:after {
+  content: "“";
+  color: #567;
+  opacity: .2;
+  font-size: 1em;
+  font-family: "Times New Roman", serif;
+  margin: 0 .15em;
+  position: relative;
+}
+
+.quote:after {
+  content: "”";
+}
+
+.author {
+  text-align: right;
+  font-size: 1.5em;
+  font-weight: 400;
+  font-style: italic;
+  font-family: "Garamond", serif;
+  margin: 1em 16%;
+  color: #567;
+  opacity: .9;
+}

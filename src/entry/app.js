@@ -1,3 +1,4 @@
 import ReactDOM from "react-dom";
+import {RootView} from '../module/RootView';
 
-ReactDOM.render(<div>alg-machine</div>, document.getElementById("root"));
+ReactDOM.render(<RootView/>, document.getElementById("root"));
