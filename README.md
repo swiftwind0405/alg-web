@@ -1,10 +1,9 @@
-#alg-machine
+# alg-machine
     
 ## Installation
+
 1. Node
 2. NPM
-
-[link](#here)
 
 ## Make it
 
