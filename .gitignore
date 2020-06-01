@@ -1,5 +1,6 @@
 .cache/
 .idea/
+.vscode/
 out/
 dist/
 node_modules/

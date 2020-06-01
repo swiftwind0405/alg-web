@@ -104,7 +104,7 @@
             //load js one by one
             var libs = [],
                 assetJss = ['/' + assets.app.js],
-                jss = libs.concat(window.isDev ? ['/dll.js'].concat(assetJss) : assetJss);
+                jss = libs.concat(assetJss);
             if (assets.ENV === 'PE') {
                 jss = jss.concat(['https://hm.baidu.com/hm.js?2d0fca51c6c529309a15be84334f66e1']);
             }
