@@ -47,19 +47,6 @@ module.exports = {
             React: 'react'
         }),
         common.createAssetsPlugin(true, outputRoot),
-        new webpack.DllReferencePlugin({
-            context: __dirname,
-            manifest: path.resolve(outputRoot, 'manifest.dll.json'),
-        }),
-        new CopyWebpackPlugin([
-            {
-                context: path.join(common.projectRoot, 'node_modules/bimernet-viewer/lib'),
-                from: '**/*',
-                ignore: ['viewer.min.js', '*.map', '*.css', '*.ts'],
-            },
-        ], {
-            copyUnmodified: true,
-        }),
         // new BundleAnalyzerPlugin(),
     ],
 
